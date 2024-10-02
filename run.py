@@ -37,4 +37,26 @@ def list_skills():
 def add_skill(move_name, power_rating, energy_cost, move_type, description):
     skills.append_row([move_name, power_rating, energy_cost, move_type, description])
 
-    
+def main():
+    while True:
+        print("\nChoose an option:")
+        print("1. List Characters")
+        print("2. Add Characters")
+        print("3. List Battles")
+        print("4. Add Battles Record")
+        print("5. List Skills")
+        print("6. Add Skill")
+        print("0. Exit")
+
+        choice = input("\nEnter your choice: ")
+
+        if choice == '1':
+            list_characters()
+        elif choice == '2':
+            name = input("Enter character name:")
+            power_level = input("Enter power level:")
+            race = input("Enter race:")
+            abilities = input("Enter abilities (comma seperated):")
+            health = input("Enter health:")
+            energy = input("enter affiliation:")
+            add_character(name, power_level, race, abilities, health, energy, affiliation)
