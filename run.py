@@ -20,7 +20,7 @@ def list_characters():
     data = characters.get_all_values()
     print(data)
 
-def add_characters(name, power_level, race, abilities, health, energy, affiliation);
+def add_characters(name, power_level, race, abilities, health, energy, affiliation):
     characters.append_row([name, power_level, race, abilities, health, energy, affiliation])
     
 def list_battles():
@@ -58,8 +58,9 @@ def main():
             race = input("Enter race:")
             abilities = input("Enter abilities (comma seperated):")
             health = input("Enter health:")
-            energy = input("enter affiliation:")
-            add_character(name, power_level, race, abilities, health, energy, affiliation)
+            energy = input("Enter energy:")
+            affiliation = input("Enter Affiliation:")
+            add_characters(name, power_level, race, abilities, health, energy, affiliation)
         elif choice == '3':
             char1 = input("Enter first character:")
             char2 = input("Enter second character:")
