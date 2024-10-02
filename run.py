@@ -60,3 +60,28 @@ def main():
             health = input("Enter health:")
             energy = input("enter affiliation:")
             add_character(name, power_level, race, abilities, health, energy, affiliation)
+        elif choice == '3':
+            char1 = input("Enter first character:")
+            char2 = input("Enter second character:")
+            outcome = input("Enter outcome:")
+            damage_dealt = input("Enter damage dealt:")
+            duration = input("enter battle duration (minutes):")
+            location = input("Enter battle location:")
+            add_battle(char1, char2, outcome, damage_dealt, duration, location)
+        elif choice == '5':
+            list_skills()
+        elif choice == '6':
+            move_name = input("Enter skill name:")
+            power_rating = input("Enter power rating:")
+            energy_cost = input("Enter enegry cost:")
+            move_type = input("Enter skill type:")
+            description = input("Enter description:")
+            add_skill(move_name, power_rating, energy_cost, move_type, description)
+        elif choice == '0':
+            print("Exiting ...")
+            break
+        else:
+            print("Invalid choice! Please try again.")
+
+if __name__ == "__main__":
+    main()
