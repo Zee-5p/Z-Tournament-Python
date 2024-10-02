@@ -13,7 +13,28 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Z Tournament Database')
 
 characters = SHEET.worksheet('Characters')
+battles = SHEET.worksheet('Battles')
+skills = SHEET.worksheet('Skills')
 
-data = characters.get_all_values()
+def list_characters():
+    data = characters.get_all_values()
+    print(data)
 
-print(data)
+def add_characters(name, power_level, race, abilities, health, energy, affiliation);
+    characters.append_row([name, power_level, race, abilities, health, energy, affiliation])
+    
+def list_battles():
+    data = battles.get_all_records()
+    print(data)
+
+def add_battle(char1, char2, outcome, damage_dealt, duration, location):
+    battles.appennd_row([char1, char2, outcome, damage_dealt, duration, location])
+
+def list_skills():
+    data = skills.get_all_records()
+    print(data)
+
+def add_skill(move_name, power_rating, energy_cost, move_type, description):
+    skills.append_row([move_name, power_rating, energy_cost, move_type, description])
+
+    
