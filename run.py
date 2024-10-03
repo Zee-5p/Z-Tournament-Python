@@ -1,5 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials 
+from tabulate import tabulate
 from pprint
 
 SCOPE = [
@@ -17,9 +18,12 @@ characters = SHEET.worksheet('Characters')
 battles = SHEET.worksheet('Battles')
 skills = SHEET.worksheet('Skills')
 
-def list_characters():
-    data = characters.get_all_values()
-    print(data)
+def get_headers_and_data(sheet):
+
+    all_data = sheet.get_all_values()
+    headers = all_data[0]
+    data = all_data[1:]
+    return headers, data
 
 def add_characters(name, power_level, race, abilities, health, energy, affiliation):
     characters.append_row([name, power_level, race, abilities, health, energy, affiliation])
