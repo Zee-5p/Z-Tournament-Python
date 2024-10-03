@@ -1,7 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials 
 from tabulate import tabulate
-from pprint
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -14,9 +14,11 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Z Tournament Database')
 
-characters = SHEET.worksheet('Characters')
-battles = SHEET.worksheet('Battles')
-skills = SHEET.worksheet('Skills')
+characters_sheet = SHEET.worksheet('Characters')
+battles_sheet = SHEET.worksheet('Battles')
+skills_sheet = SHEET.worksheet('Skills')
+
+
 
 def get_headers_and_data(sheet):
 
@@ -29,9 +31,17 @@ def display_table(headers, data):
 
     print(tabulate(data, headers, tablefmt="grid"))
 
+# Function to list all characters from the 'Charcaters' worksheet.
+def get_all_characters():
 
-def add_characters(name, power_level, race, abilities, health, energy, affiliation):
-    characters.append_row([name, power_level, race, abilities, health, energy, affiliation])
+    try:
+        headers, data = get_headers_and_data(characters_sheet)
+        if not data:
+            print("No characters found.")
+        else:
+            display_table(headers, data)
+    except Exception as e:
+        print(f"Error retrieving characters: {e}")
     
 def list_battles():
     data = battles.get_all_records()
