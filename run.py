@@ -56,6 +56,7 @@ def get_all_battles():
     except Exception as e:
         print(f"Error retrieving battles: {e}")
 
+# Function to list all skills from the 'Skills' worksheet.
 def get_all_skills():
     try:
         headers, data = get_headers_and_data(skills_sheet)
