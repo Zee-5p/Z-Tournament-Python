@@ -76,14 +76,45 @@ def add_new_character():
         print("Choose a race:")
         for i, race in enumerate(races, 1):
             print(f"{i}.{race}")
-        race_choice = input("enter the number correspodning to the race:").strip()
+        race_choice = input("enter the number corresponding to the race:").strip()
         race = races[int(race_choice) - 1] if race_choice.isdigit() and 1 <= int(race_choice) <= len(races) else None
 
         if not race:
             print("Invalid race choice.")
             return
+        
+        while True:
+            power_level = input("Enter character power level (1-15000): ").strip()
+            if power_level.isdigit() and 1 <= int(power_level) <= 15000:
+                break
+            else:
+                print("Invalid power level. Please enter a number between 1 and 15000.")
 
+        while True:
+            health = input("Enter character health (0-100): ").strip()
+            if health.isdigit() and 0 <= int(health) <= 100:
+                break
+            else:
+                print("Invalid health value. Please enter a number between 0 and 100.")
 
+        while True:
+            energy = input("Enter character energy (0-150): ").strip()
+            if energy.isdigit() and 0 <= int(energy) <= 150:
+                break
+            else:
+                print("Invalid energy value. Please enter a number between 0 and 150.")
+
+        affiliations = ["Z Fighter", "Villain"]
+        print("Choose an affiliation:")
+        for i, affiliation in enumerate(affiliations, 1):
+            print(f"{i}. {affiliation}")
+        affiliation_choice = input("Enter the number corresponding to the affiliation: ").strip()
+        affiliation = affiliations[int(affiliation_choice) - 1] if affiliation_choice.isdigit() and 1 <= int(affiliation_choice) <= len(affiliations) else None
+             
+        if not affiliation:
+            print("Invalid affiliation choice.")
+            return
+        
 def main():
     while True:
         print("\nChoose an option:")
