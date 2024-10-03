@@ -42,10 +42,19 @@ def get_all_characters():
             display_table(headers, data)
     except Exception as e:
         print(f"Error retrieving characters: {e}")
-    
-def list_battles():
-    data = battles.get_all_records()
-    print(data)
+
+
+# Function to list all battles from the 'Battles' worksheet.
+def get_all_battles():
+   
+    try:
+        headers, data = get_headers_and_data(battles_sheet)
+        if not data:
+            print("No battles found.")
+        else:
+            display_table(headers, data)
+    except Exception as e:
+        print(f"Error retrieving battles: {e}")
 
 def add_battle(char1, char2, outcome, damage_dealt, duration, location):
     battles.appennd_row([char1, char2, outcome, damage_dealt, duration, location])
