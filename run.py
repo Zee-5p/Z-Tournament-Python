@@ -138,56 +138,11 @@ def add_new_skills():
                 break
             else:
                 print("Invalid energy cost. Please enter a number between 0 and 150.")
-                
+
+        skills_sheet.append_row([skill_name, power_rating, energy_cost])
+        print("New skill added successfully!")
+    except Exception as e:
+        print(f"Error adding new skill: {e}")
 
 
 
-def main():
-    while True:
-        print("\nChoose an option:")
-        print("1. List Characters")
-        print("2. Add Characters")
-        print("3. List Battles")
-        print("4. Add Battles Record")
-        print("5. List Skills")
-        print("6. Add Skill")
-        print("0. Exit")
-
-        choice = input("\nEnter your choice: ")
-
-        if choice == '1':
-            list_characters()
-        elif choice == '2':
-            name = input("Enter character name:")
-            power_level = input("Enter power level:")
-            race = input("Enter race:")
-            abilities = input("Enter abilities (comma seperated):")
-            health = input("Enter health:")
-            energy = input("Enter energy:")
-            affiliation = input("Enter Affiliation:")
-            add_characters(name, power_level, race, abilities, health, energy, affiliation)
-        elif choice == '3':
-            char1 = input("Enter first character:")
-            char2 = input("Enter second character:")
-            outcome = input("Enter outcome:")
-            damage_dealt = input("Enter damage dealt:")
-            duration = input("enter battle duration (minutes):")
-            location = input("Enter battle location:")
-            add_battle(char1, char2, outcome, damage_dealt, duration, location)
-        elif choice == '5':
-            list_skills()
-        elif choice == '6':
-            move_name = input("Enter skill name:")
-            power_rating = input("Enter power rating:")
-            energy_cost = input("Enter enegry cost:")
-            move_type = input("Enter skill type:")
-            description = input("Enter description:")
-            add_skill(move_name, power_rating, energy_cost, move_type, description)
-        elif choice == '0':
-            print("Exiting ...")
-            break
-        else:
-            print("Invalid choice! Please try again.")
-
-if __name__ == "__main__":
-    main()
