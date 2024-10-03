@@ -25,6 +25,11 @@ def get_headers_and_data(sheet):
     data = all_data[1:]
     return headers, data
 
+def display_table(headers, data):
+
+    print(tabulate(data, headers, tablefmt="grid"))
+
+
 def add_characters(name, power_level, race, abilities, health, energy, affiliation):
     characters.append_row([name, power_level, race, abilities, health, energy, affiliation])
     
