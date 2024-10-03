@@ -165,3 +165,25 @@ def menu():
         print("6. Add new skill")
         print("7. Exit")
 
+        choice = input("Enter your choice (1-7):").strip()
+
+        if choice == "1":
+            list_characters()
+        elif choice == "2":
+            list_battles()
+        elif choice == "3":
+            list_skills()
+        elif choice == "4":
+            add_new_character()
+        elif choice == "5":
+            add_new_battle()
+        elif choice == "6":
+            add_new_skill()
+        elif choice == "7":
+            print("Exiting the application.")
+            break
+        else:
+            print("Invalid choice, please select a valid option.")
+
+    git add .
+
