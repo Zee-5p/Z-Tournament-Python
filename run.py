@@ -144,5 +144,24 @@ def add_new_skills():
     except Exception as e:
         print(f"Error adding new skill: {e}")
 
+def list_characters():
+    get_all_characters()
 
+def list_battles():
+    get_all_battles
+
+def list_skills():
+    get_all_skills()
+
+def menu():
+
+    while True:
+        print("\n--- Z Tournament Database ---")
+        print("1. List all characters")
+        print("2. List all battles")
+        print("3. List all skills")
+        print("4. Add new character")
+        print("5. Add new battle")
+        print("6. Add new skill")
+        print("7. Exit")
 
