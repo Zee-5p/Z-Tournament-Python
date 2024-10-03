@@ -148,7 +148,7 @@ def list_characters():
     get_all_characters()
 
 def list_battles():
-    get_all_battles
+    get_all_battles()
 
 def list_skills():
     get_all_skills()
@@ -185,5 +185,6 @@ def menu():
         else:
             print("Invalid choice, please select a valid option.")
 
-    git add .
+if __name__ == "__main__":
+    menu()   
 
