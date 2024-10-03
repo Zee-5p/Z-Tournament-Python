@@ -67,7 +67,21 @@ def get_all_skills():
     except Exception as e:
         print(f"Error retrieveing skills: {e}")
 
+def add_new_character():
 
+    try:
+        name =input("Enter Character name:").strip()
+
+        races = ["Saiyan", "Alien", "Human", "Android"]
+        print("Choose a race:")
+        for i, race in enumerate(races, 1):
+            print(f"{i}.{race}")
+        race_choice = input("enter the number correspodning to the race:").strip()
+        race = races[int(race_choice) - 1] if race_choice.isdigit() and 1 <= int(race_choice) <= len(races) else None
+
+        if not race:
+            print("Invalid race choice.")
+            return
 
 
 def main():
