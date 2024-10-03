@@ -120,6 +120,27 @@ def add_new_character():
     except Exception as e:
         print(f"Error adding new character: {e}")
 
+def add_new_skills():
+
+    try:
+        skill_name = input("Enter skill name:").strip()
+
+        while True:
+            power_rating = input("Enter power rating (0-1000):").strip()
+            if power_rating.isdigit() and 0 <= int(power_rating) <= 1000:
+                break
+            else:
+                print("Invalid power rating. Please enter a number between 0 and 1000.")
+        
+        while True:
+            energy_cost = input("Enter energy cost (0-150): ").strip()
+            if energy_cost.isdigit() and 0 <= int(energy_cost) <= 150:
+                break
+            else:
+                print("Invalid energy cost. Please enter a number between 0 and 150.")
+                
+
+
 
 def main():
     while True:
