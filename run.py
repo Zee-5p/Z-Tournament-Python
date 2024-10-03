@@ -115,6 +115,12 @@ def add_new_character():
             print("Invalid affiliation choice.")
             return
         
+        characters_sheet.append_row([name, race, power_level, health, nergy, affiliation])
+        print("New character added successfully!")
+    except Exception as e:
+        print(f"Error adding new character: {e}")
+
+
 def main():
     while True:
         print("\nChoose an option:")
