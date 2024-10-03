@@ -56,15 +56,18 @@ def get_all_battles():
     except Exception as e:
         print(f"Error retrieving battles: {e}")
 
-def add_battle(char1, char2, outcome, damage_dealt, duration, location):
-    battles.appennd_row([char1, char2, outcome, damage_dealt, duration, location])
+def get_all_skills():
+    try:
+        headers, data = get_headers_and_data(skills_sheet)
+        if not data:
+            print("No skills found.")
+        else:
+            display_table(headers, data)
+    except Exception as e:
+        print(f"Error retrieveing skills: {e}")
 
-def list_skills():
-    data = skills.get_all_records()
-    print(data)
 
-def add_skill(move_name, power_rating, energy_cost, move_type, description):
-    skills.append_row([move_name, power_rating, energy_cost, move_type, description])
+
 
 def main():
     while True:
