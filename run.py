@@ -124,6 +124,21 @@ def add_new_character():
     except Exception as e:
         print(f"Error adding new character: {e}")
 
+def add_new_battle():
+
+    try:
+        characters_data = characters_sheet.get_all_values()
+        characters_name = [row[0] for row in characters_data[1:]]
+
+        if len(characters_name) < 2:
+            print("Not enough characters available to record a battle.")
+            return
+
+
+
+
+
+
 def add_new_skills():
 
     try:
