@@ -134,6 +134,25 @@ def add_new_battle():
             print("Not enough characters available to record a battle.")
             return
 
+        print("Choose Character 1:")
+        for i, name in enumerate(character_names, 1):
+            print(f"{i}. {name}")
+        char1_choice = input("Enter the number corresponding to Character 1: ").strip()
+        char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
+        
+        if not char1:
+            print("Invalid choice for Character 1.")
+            return
+
+        print("Choose Character 2:")
+        for i, name in enumerate(character_names, 1):
+            print(f"{i}. {name}")
+        char2_choice = input("Enter the number corresponding to Character 2: ").strip()
+        char2 = character_names[int(char2_choice) - 1] if char2_choice.isdigit() and 1 <= int(char2_choice) <= len(character_names) and character_names[int(char2_choice) - 1] != char1 else None
+        
+        if not char2:
+            print("Invalid choice for Character 2 or same character chosen.")
+            return
 
 
 
