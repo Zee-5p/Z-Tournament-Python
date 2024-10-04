@@ -27,9 +27,11 @@ def get_headers_and_data(sheet):
     data = all_data[1:]
     return headers, data
 
+
 def display_table(headers, data):
 
     print(tabulate(data, headers, tablefmt="grid"))
+
 
 # Function to list all characters from the 'Charcaters' worksheet.
 def get_all_characters():
@@ -70,7 +72,7 @@ def get_all_skills():
 def add_new_character():
 
     try:
-        name =input("Enter Character name:").strip()
+        name = input("Enter Character name:").strip()
 
         races = ["Saiyan", "Alien", "Human", "Android"]
         print("Choose a race:")
@@ -89,6 +91,8 @@ def add_new_character():
                 break
             else:
                 print("Invalid power level. Please enter a number between 1 and 15000.")
+
+        abilities = input("Enter character's abilities (comma-separated if multiple): ").strip()
 
         while True:
             health = input("Enter character health (0-100): ").strip()
@@ -115,7 +119,7 @@ def add_new_character():
             print("Invalid affiliation choice.")
             return
         
-        characters_sheet.append_row([name, race, power_level, health, nergy, affiliation])
+        characters_sheet.append_row([name, power_level, race, abilities, health, energy, affiliation])
         print("New character added successfully!")
     except Exception as e:
         print(f"Error adding new character: {e}")
@@ -178,7 +182,7 @@ def menu():
         elif choice == "5":
             add_new_battle()
         elif choice == "6":
-            add_new_skill()
+            add_new_skills()
         elif choice == "7":
             print("Exiting the application.")
             break
