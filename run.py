@@ -18,7 +18,7 @@ characters_sheet = SHEET.worksheet('Characters')
 battles_sheet = SHEET.worksheet('Battles')
 skills_sheet = SHEET.worksheet('Skills')
 
-
+# Function to retrieve the headers and data from the google sheet
 def get_headers_and_data(sheet):
 
     all_data = sheet.get_all_values()
@@ -27,12 +27,13 @@ def get_headers_and_data(sheet):
     return headers, data
 
 
+# Function to display data as a table using tabulate 
 def display_table(headers, data):
 
     print(tabulate(data, headers, tablefmt="grid"))
 
 
-# Function to list all characters from the 'Charcaters' worksheet.
+# Function to list all characters from the 'Characters' worksheet.
 def get_all_characters():
 
     try:
@@ -70,6 +71,7 @@ def get_all_skills():
         print(f"Error retrieveing skills: {e}")
 
 
+# Function to add new characters to the 'Characters' worksheet.
 def add_new_character():
 
     try:
@@ -126,6 +128,7 @@ def add_new_character():
         print(f"Error adding new character: {e}")
 
 
+# Function to add new battles to the 'Battles' worksheet.
 def add_new_battle():
 
     try:
@@ -214,6 +217,7 @@ def add_new_battle():
         print(f"error adding new battle: {e}")
 
 
+# Function to add new skills to the 'Skills' worksheet.
 def add_new_skills():
 
     try:
@@ -239,18 +243,22 @@ def add_new_skills():
         print(f"Error adding new skill: {e}")
 
 
+#Function to call the character retrieval function and list all characters 
 def list_characters():
     get_all_characters()
 
 
+#Function to call the battle retrieval function and list all battles
 def list_battles():
     get_all_battles()
 
 
+#Function to call the skills retrieval function and list all skills
 def list_skills():
     get_all_skills()
 
 
+#Main menu function to list all options and interact with database 
 def menu():
 
     while True:
