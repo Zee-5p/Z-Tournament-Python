@@ -138,7 +138,7 @@ def add_new_battle():
         char1 = None
         while not char1:
             print("Choose Character 1:")
-            for i, name in enumerate(character_names, 1):
+            for i, name in enumerate(characters_names, 1):
                 print(f"{i}. {name}")
             char1_choice = input("Enter the number corresponding to Character 1: ").strip()
             char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
@@ -196,7 +196,7 @@ def add_new_battle():
         if location_choice == str(len(locations) + 1):
 
             new_location = input("Enter the name of the new location:").strip()
-            if new_location
+            if new_location:
                 location = new_location
                 locations.append(new_location)
                 print(f"New location '{new_location}' added successfully.")
