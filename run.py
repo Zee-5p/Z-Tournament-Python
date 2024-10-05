@@ -19,7 +19,6 @@ battles_sheet = SHEET.worksheet('Battles')
 skills_sheet = SHEET.worksheet('Skills')
 
 
-
 def get_headers_and_data(sheet):
 
     all_data = sheet.get_all_values()
@@ -58,6 +57,7 @@ def get_all_battles():
     except Exception as e:
         print(f"Error retrieving battles: {e}")
 
+
 # Function to list all skills from the 'Skills' worksheet.
 def get_all_skills():
     try:
@@ -68,6 +68,7 @@ def get_all_skills():
             display_table(headers, data)
     except Exception as e:
         print(f"Error retrieveing skills: {e}")
+
 
 def add_new_character():
 
@@ -218,9 +219,6 @@ def add_new_battle():
         print(f"error adding new battle: {e}")
 
 
-
-
-
 def add_new_skills():
 
     try:
@@ -245,14 +243,18 @@ def add_new_skills():
     except Exception as e:
         print(f"Error adding new skill: {e}")
 
+
 def list_characters():
     get_all_characters()
+
 
 def list_battles():
     get_all_battles()
 
+
 def list_skills():
     get_all_skills()
+
 
 def menu():
 
