@@ -179,7 +179,17 @@ def add_new_battle():
             else:
                 print("Invalid duration value. Please enter a number between 0 and 10.")
 
+        locations = ['Planet Namek', 'Tournament Arena', 'Hyperbolic Time Chamber', 'Earth']
+        print("Choose battle location:")
+        for i, location in enumerate(locations, 1):
+            print(f"{i}. {location}")
+        location_choice = input("Enter the number corresponding to the location: ").strip()
+        location = locations[int(location_choice) - 1] if location_choice.isdigit() and 1 <= int(location_choice) <= len(locations) else None
         
+        if not location:
+            print("Invalid location choice.")
+            return
+
 
 
 
