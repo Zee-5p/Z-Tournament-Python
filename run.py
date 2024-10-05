@@ -135,36 +135,40 @@ def add_new_battle():
             print("Not enough characters available to record a battle.")
             return
 
-        print("Choose Character 1:")
-        for i, name in enumerate(character_names, 1):
-            print(f"{i}. {name}")
-        char1_choice = input("Enter the number corresponding to Character 1: ").strip()
-        char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
-        
-        if not char1:
-            print("Invalid choice for Character 1.")
-            return
+        char1 = None
+        while not char1:
+            print("Choose Character 1:")
+            for i, name in enumerate(character_names, 1):
+                print(f"{i}. {name}")
+            char1_choice = input("Enter the number corresponding to Character 1: ").strip()
+            char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
+            if not char1:
+                print("Invalid choice for Character 1. Please try again.")
+            
 
-        print("Choose Character 2:")
-        for i, name in enumerate(character_names, 1):
-            print(f"{i}. {name}")
-        char2_choice = input("Enter the number corresponding to Character 2: ").strip()
-        char2 = character_names[int(char2_choice) - 1] if char2_choice.isdigit() and 1 <= int(char2_choice) <= len(character_names) and character_names[int(char2_choice) - 1] != char1 else None
+        char2 = None
+        while not char2:
+            print("Choose Character 2:")
+            for i, name in enumerate(character_names, 1):
+                print(f"{i}. {name}")
+            char2_choice = input("Enter the number corresponding to Character 2: ").strip()
+            char2 = character_names[int(char2_choice) - 1] if char2_choice.isdigit() and 1 <= int(char2_choice) <= len(character_names) and character_names[int(char2_choice) - 1] != char1 else None
+            if not char2:
+                print("Invalid choice for Character 2 or same character chosen. Please try again.")
         
-        if not char2:
-            print("Invalid choice for Character 2 or same character chosen.")
-            return
-        print(f"Choose the outcome of the battle between {char1} and {char2}:")
-        print(f"1. {char1} wins")
-        print(f"2. {char2} wins")
-        outcome_choice = input("Enter the number corresponding to the winner: ").strip()
-        if outcome_choice == "1":
-            outcome = f"{char1} wins"
-        elif outcome_choice == "2":
-            outcome = f"{char2} wins"
-        else:
-            print("Invlaid outcome choice.")
-            return
+        outcome_choice = None
+        while outcome_choice not in ["1", "2"]:
+            print(f"Choose the outcome of the battle between {char1} and {char2}:")
+            print(f"1. {char1} wins")
+            print(f"2. {char2} wins")
+            outcome_choice = input("Enter the number corresponding to the winner: ").strip()
+            if outcome_choice == "1":
+                outcome = f"{char1} wins"
+            elif outcome_choice == "2":
+                outcome = f"{char2} wins"
+            else:
+                print("Invlaid outcome choice. Please try again")
+            
         
         while True:
             damage_dealt = input("Enter damage dealt (0-100):").strip()
