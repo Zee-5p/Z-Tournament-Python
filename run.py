@@ -124,6 +124,7 @@ def add_new_character():
     except Exception as e:
         print(f"Error adding new character: {e}")
 
+
 def add_new_battle():
 
     try:
@@ -183,8 +184,25 @@ def add_new_battle():
         print("Choose battle location:")
         for i, location in enumerate(locations, 1):
             print(f"{i}. {location}")
-        location_choice = input("Enter the number corresponding to the location: ").strip()
-        location = locations[int(location_choice) - 1] if location_choice.isdigit() and 1 <= int(location_choice) <= len(locations) else None
+        print(f"{len(locations) + 1}. Add a new location")
+
+
+        location_choice = input(f"Enter the number corresponding to the location or choose {len(locations) + 1} to add a new one: ").strip()
+
+        if location_choice == str(len(locations) + 1):
+
+            new_location = input("Enter the name of the new location:").strip()
+            if new_location
+                location = new_location
+                locations.append(new_location)
+                print(f"New location '{new_location}' added successfully.")
+            else:
+                print("Invalid location name. Location not added.")
+                return
+            
+        else:
+             
+             location = locations[int(location_choice) - 1] if location_choice.isdigit() and 1 <= int(location_choice) <= len(locations) else None
         
         if not location:
             print("Invalid location choice.")
@@ -194,7 +212,7 @@ def add_new_battle():
         print("New battle added successfully!")
     except Exception as e:
         print(f"error adding new battle: {e}")
-        
+
 
 
 
