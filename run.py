@@ -165,6 +165,20 @@ def add_new_battle():
             print("Invlaid outcome choice.")
             return
         
+        while True:
+            damage_dealt = input("Enter damage dealt (0-100):").strip()
+            if damage_dealt.isdigit() and 0 <= int(damage_dealt) <= 100:
+                break
+            else:
+                print("Invalid damage value. Please enter a number between 0 and 100.")
+
+        while True:
+            duration = input("Enter battle duration (0-10):").strip()
+            if duration.isdigit() and 0 <= int(duration) <= 10:
+                break
+            else:
+                print("Invalid duration value. Please enter a number between 0 and 10.")
+
         
 
 
