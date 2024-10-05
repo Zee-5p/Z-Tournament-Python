@@ -1,5 +1,5 @@
 import gspread
-from google.oauth2.service_account import Credentials 
+from google.oauth2.service_account import Credentials
 from tabulate import tabulate
 
 
@@ -47,7 +47,7 @@ def get_all_characters():
 
 # Function to list all battles from the 'Battles' worksheet.
 def get_all_battles():
-   
+
     try:
         headers, data = get_headers_and_data(battles_sheet)
         if not data:
@@ -85,7 +85,7 @@ def add_new_character():
         if not race:
             print("Invalid race choice.")
             return
-        
+
         while True:
             power_level = input("Enter character power level (1-15000): ").strip()
             if power_level.isdigit() and 1 <= int(power_level) <= 15000:
@@ -115,11 +115,11 @@ def add_new_character():
             print(f"{i}. {affiliation}")
         affiliation_choice = input("Enter the number corresponding to the affiliation: ").strip()
         affiliation = affiliations[int(affiliation_choice) - 1] if affiliation_choice.isdigit() and 1 <= int(affiliation_choice) <= len(affiliations) else None
-             
+
         if not affiliation:
             print("Invalid affiliation choice.")
             return
-        
+
         characters_sheet.append_row([name, power_level, race, abilities, health, energy, affiliation])
         print("New character added successfully!")
     except Exception as e:
@@ -145,7 +145,6 @@ def add_new_battle():
             char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
             if not char1:
                 print("Invalid choice for Character 1. Please try again.")
-            
 
         char2 = None
         while not char2:
@@ -156,7 +155,7 @@ def add_new_battle():
             char2 = character_names[int(char2_choice) - 1] if char2_choice.isdigit() and 1 <= int(char2_choice) <= len(character_names) and character_names[int(char2_choice) - 1] != char1 else None
             if not char2:
                 print("Invalid choice for Character 2 or same character chosen. Please try again.")
-        
+
         outcome_choice = None
         while outcome_choice not in ["1", "2"]:
             print(f"Choose the outcome of the battle between {char1} and {char2}:")
@@ -169,8 +168,7 @@ def add_new_battle():
                 outcome = f"{char2} wins"
             else:
                 print("Invlaid outcome choice. Please try again")
-            
-        
+
         while True:
             damage_dealt = input("Enter damage dealt (0-100):").strip()
             if damage_dealt.isdigit() and 0 <= int(damage_dealt) <= 100:
@@ -190,8 +188,6 @@ def add_new_battle():
         for i, location in enumerate(locations, 1):
             print(f"{i}. {location}")
         print(f"{len(locations) + 1}. Add a new location")
-
-
         location_choice = input(f"Enter the number corresponding to the location or choose {len(locations) + 1} to add a new one: ").strip()
 
         if location_choice == str(len(locations) + 1):
@@ -204,11 +200,10 @@ def add_new_battle():
             else:
                 print("Invalid location name. Location not added.")
                 return
-            
+
         else:
-             
-             location = locations[int(location_choice) - 1] if location_choice.isdigit() and 1 <= int(location_choice) <= len(locations) else None
-        
+            location = locations[int(location_choice) - 1] if location_choice.isdigit() and 1 <= int(location_choice) <= len(locations) else None
+
         if not location:
             print("Invalid location choice.")
             return
@@ -230,7 +225,7 @@ def add_new_skills():
                 break
             else:
                 print("Invalid power rating. Please enter a number between 0 and 1000.")
-        
+
         while True:
             energy_cost = input("Enter energy cost (0-150): ").strip()
             if energy_cost.isdigit() and 0 <= int(energy_cost) <= 150:
@@ -288,6 +283,7 @@ def menu():
         else:
             print("Invalid choice, please select a valid option.")
 
+
 if __name__ == "__main__":
-    menu()   
+    menu()
 
