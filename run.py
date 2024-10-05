@@ -190,7 +190,11 @@ def add_new_battle():
             print("Invalid location choice.")
             return
 
-
+        battles_sheet.append_row([char1, char2, outcome, damage_dealt, duration, location])
+        print("New battle added successfully!")
+    except Exception as e:
+        print(f"error adding new battle: {e}")
+        
 
 
 
