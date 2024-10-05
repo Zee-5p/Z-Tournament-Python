@@ -153,6 +153,19 @@ def add_new_battle():
         if not char2:
             print("Invalid choice for Character 2 or same character chosen.")
             return
+        print(f"Choose the outcome of the battle between {char1} and {char2}:")
+        print(f"1. {char1} wins")
+        print(f"2. {char2} wins")
+        outcome_choice = input("Enter the number corresponding to the winner: ").strip()
+        if outcome_choice == "1":
+            outcome = f"{char1} wins"
+        elif outcome_choice == "2":
+            outcome = f"{char2} wins"
+        else:
+            print("Invlaid outcome choice.")
+            return
+        
+        
 
 
 
