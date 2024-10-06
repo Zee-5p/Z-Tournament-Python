@@ -30,7 +30,7 @@ def get_headers_and_data(sheet):
 # Function to display data as a table using tabulate 
 def display_table(headers, data):
 
-    print(tabulate(data, headers, tablefmt="grid"))
+    print(tabulate(data, headers, tablefmt="simple"))
 
 
 # Function to list all characters from the 'Characters' worksheet.
