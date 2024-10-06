@@ -27,9 +27,24 @@ def get_headers_and_data(sheet):
     return headers, data
 
 
-# Function to display data as a table using tabulate
-def display_table(headers, data):
-    print(tabulate(data, headers, tablefmt="simple"))
+def display_table_dynamic_width(headers, data):
+    total_header_length = sum(len(header) for header in headers)
+    num_columns = len(headers)
+    max_width = 80
+
+    if total_header_length >= max_width:
+        column_widths = [max(1, max_width // num_columns)] * num_columns
+    else:
+        column_widths = [(max_width - total_header_length) // num_columns + 1 for _ in range(num_columns)]
+
+    truncated_headers = [header[:width] + '...' if len(header) > width else header for header, width in zip(headers, column_widths)]
+
+    truncated_data = []
+    for row in data:
+        truncated_row = [cell[:width] + '...' if len(cell) > width else cell for cell, width in zip(row, column_widths)]
+        truncated_data.append(truncated_row)
+
+    print(tabulate(truncated_data, truncated_headers, tablefmt="simple"))
 
 
 # Function to list all characters from the 'Characters' worksheet.
