@@ -27,13 +27,19 @@ def get_headers_and_data(sheet):
     return headers, data
 
 
-# Function to display data as a table using tabulate 
-def display_table(headers, data):
+# Function to truncate strings to a specified max length
+def truncate_string(s, max_length):
+    return s[:max_length] + "..." if len(s) > max_length else s
 
-    max_widths = [max(len(header), max(len(row[i]) for row in data)) for i, header in enumerate(headers)]
-    maxcolwidth = max(max_widths) + 2 
 
-    print(tabulate(data, headers, tablefmt="simple", maxcolwidth= maxcolwidth))
+# Function to display data as a table using tabulate with truncation
+def display_table(headers, data, max_length=20):
+
+    truncated_headers = [truncate_string(header, max_length) for header in headers]
+    
+    truncated_data = [[truncate_string(str(item), max_length) for item in row] for row in data]
+
+    print(tabulate(truncated_data, headers=truncated_headers, tablefmt="grid"))
 
 
 # Function to list all characters from the 'Characters' worksheet.
