@@ -75,13 +75,13 @@ def get_all_skills():
 def add_new_character():
 
     try:
-        name = input("Enter Character name:").strip()
+        name = input("Enter Character name:\n").strip()
 
         races = ["Saiyan", "Alien", "Human", "Android"]
         print("Choose a race:")
         for i, race in enumerate(races, 1):
             print(f"{i}.{race}")
-        race_choice = input("enter the number corresponding to the race:").strip()
+        race_choice = input("enter the number corresponding to the race:\n").strip()
         race = races[int(race_choice) - 1] if race_choice.isdigit() and 1 <= int(race_choice) <= len(races) else None
 
         if not race:
@@ -89,23 +89,23 @@ def add_new_character():
             return
 
         while True:
-            power_level = input("Enter character power level (1-15000): ").strip()
+            power_level = input("Enter character power level (1-15000):\n").strip()
             if power_level.isdigit() and 1 <= int(power_level) <= 15000:
                 break
             else:
                 print("Invalid power level. Please enter a number between 1 and 15000.")
 
-        abilities = input("Enter character's abilities (comma-separated if multiple): ").strip()
+        abilities = input("Enter character's abilities (comma-separated if multiple):\n").strip()
 
         while True:
-            health = input("Enter character health (0-100): ").strip()
+            health = input("Enter character health (0-100):\n").strip()
             if health.isdigit() and 0 <= int(health) <= 100:
                 break
             else:
                 print("Invalid health value. Please enter a number between 0 and 100.")
 
         while True:
-            energy = input("Enter character energy (0-150): ").strip()
+            energy = input("Enter character energy (0-150):\n").strip()
             if energy.isdigit() and 0 <= int(energy) <= 150:
                 break
             else:
@@ -115,7 +115,7 @@ def add_new_character():
         print("Choose an affiliation:")
         for i, affiliation in enumerate(affiliations, 1):
             print(f"{i}. {affiliation}")
-        affiliation_choice = input("Enter the number corresponding to the affiliation: ").strip()
+        affiliation_choice = input("Enter the number corresponding to the affiliation:\n").strip()
         affiliation = affiliations[int(affiliation_choice) - 1] if affiliation_choice.isdigit() and 1 <= int(affiliation_choice) <= len(affiliations) else None
 
         if not affiliation:
@@ -144,7 +144,7 @@ def add_new_battle():
             print("Choose Character 1:")
             for i, name in enumerate(characters_names, 1):
                 print(f"{i}. {name}")
-            char1_choice = input("Enter the number corresponding to Character 1: ").strip()
+            char1_choice = input("Enter the number corresponding to Character 1:\n").strip()
             char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
             if not char1:
                 print("Invalid choice for Character 1. Please try again.")
@@ -154,7 +154,7 @@ def add_new_battle():
             print("Choose Character 2:")
             for i, name in enumerate(character_names, 1):
                 print(f"{i}. {name}")
-            char2_choice = input("Enter the number corresponding to Character 2: ").strip()
+            char2_choice = input("Enter the number corresponding to Character 2:\n").strip()
             char2 = character_names[int(char2_choice) - 1] if char2_choice.isdigit() and 1 <= int(char2_choice) <= len(character_names) and character_names[int(char2_choice) - 1] != char1 else None
             if not char2:
                 print("Invalid choice for Character 2 or same character chosen. Please try again.")
@@ -164,7 +164,7 @@ def add_new_battle():
             print(f"Choose the outcome of the battle between {char1} and {char2}:")
             print(f"1. {char1} wins")
             print(f"2. {char2} wins")
-            outcome_choice = input("Enter the number corresponding to the winner: ").strip()
+            outcome_choice = input("Enter the number corresponding to the winner:\n").strip()
             if outcome_choice == "1":
                 outcome = f"{char1} wins"
             elif outcome_choice == "2":
@@ -173,14 +173,14 @@ def add_new_battle():
                 print("Invlaid outcome choice. Please try again")
 
         while True:
-            damage_dealt = input("Enter damage dealt (0-100):").strip()
+            damage_dealt = input("Enter damage dealt (0-100):\n").strip()
             if damage_dealt.isdigit() and 0 <= int(damage_dealt) <= 100:
                 break
             else:
                 print("Invalid damage value. Please enter a number between 0 and 100.")
 
         while True:
-            duration = input("Enter battle duration (0-10):").strip()
+            duration = input("Enter battle duration (0-10):\n").strip()
             if duration.isdigit() and 0 <= int(duration) <= 10:
                 break
             else:
@@ -191,11 +191,11 @@ def add_new_battle():
         for i, location in enumerate(locations, 1):
             print(f"{i}. {location}")
         print(f"{len(locations) + 1}. Add a new location")
-        location_choice = input(f"Enter the number corresponding to the location or choose {len(locations) + 1} to add a new one: ").strip()
+        location_choice = input(f"Enter the number corresponding to the location or choose {len(locations) + 1} to add a new one: \n").strip()
 
         if location_choice == str(len(locations) + 1):
 
-            new_location = input("Enter the name of the new location:").strip()
+            new_location = input("Enter the name of the new location:\n").strip()
             if new_location:
                 location = new_location
                 locations.append(new_location)
@@ -221,17 +221,17 @@ def add_new_battle():
 def add_new_skills():
 
     try:
-        skill_name = input("Enter skill name:").strip()
+        skill_name = input("Enter skill name:\n").strip()
 
         while True:
-            power_rating = input("Enter power rating (0-1000):").strip()
+            power_rating = input("Enter power rating (0-1000):\n").strip()
             if power_rating.isdigit() and 0 <= int(power_rating) <= 1000:
                 break
             else:
                 print("Invalid power rating. Please enter a number between 0 and 1000.")
 
         while True:
-            energy_cost = input("Enter energy cost (0-150): ").strip()
+            energy_cost = input("Enter energy cost (0-150):\n").strip()
             if energy_cost.isdigit() and 0 <= int(energy_cost) <= 150:
                 break
             else:
@@ -271,7 +271,7 @@ def menu():
         print("6. Add new skill")
         print("7. Exit")
 
-        choice = input("Enter your choice (1-7):").strip()
+        choice = input("Enter your choice (1-7):\n").strip()
 
         if choice == "1":
             list_characters()
