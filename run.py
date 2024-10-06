@@ -7,7 +7,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
     "https://www.googleapis.com/auth/drive"
-    ]
+]
 
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
@@ -18,24 +18,22 @@ characters_sheet = SHEET.worksheet('Characters')
 battles_sheet = SHEET.worksheet('Battles')
 skills_sheet = SHEET.worksheet('Skills')
 
+
 # Function to retrieve the headers and data from the google sheet
 def get_headers_and_data(sheet):
-
     all_data = sheet.get_all_values()
     headers = all_data[0]
     data = all_data[1:]
     return headers, data
 
 
-# Function to display data as a table using tabulate 
+# Function to display data as a table using tabulate
 def display_table(headers, data):
-
     print(tabulate(data, headers, tablefmt="simple"))
 
 
 # Function to list all characters from the 'Characters' worksheet.
 def get_all_characters():
-
     try:
         headers, data = get_headers_and_data(characters_sheet)
         if not data:
@@ -48,7 +46,6 @@ def get_all_characters():
 
 # Function to list all battles from the 'Battles' worksheet.
 def get_all_battles():
-
     try:
         headers, data = get_headers_and_data(battles_sheet)
         if not data:
@@ -68,20 +65,19 @@ def get_all_skills():
         else:
             display_table(headers, data)
     except Exception as e:
-        print(f"Error retrieveing skills: {e}")
+        print(f"Error retrieving skills: {e}")
 
 
 # Function to add new characters to the 'Characters' worksheet.
 def add_new_character():
-
     try:
         name = input("Enter Character name:\n").strip()
 
         races = ["Saiyan", "Alien", "Human", "Android"]
         print("Choose a race:")
         for i, race in enumerate(races, 1):
-            print(f"{i}.{race}")
-        race_choice = input("enter the number corresponding to the race:\n").strip()
+            print(f"{i}. {race}")
+        race_choice = input("Enter the number corresponding to the race:\n").strip()
         race = races[int(race_choice) - 1] if race_choice.isdigit() and 1 <= int(race_choice) <= len(races) else None
 
         if not race:
@@ -130,19 +126,18 @@ def add_new_character():
 
 # Function to add new battles to the 'Battles' worksheet.
 def add_new_battle():
-
     try:
         characters_data = characters_sheet.get_all_values()
-        characters_name = [row[0] for row in characters_data[1:]]
+        character_names = [row[0] for row in characters_data[1:]]
 
-        if len(characters_name) < 2:
+        if len(character_names) < 2:
             print("Not enough characters available to record a battle.")
             return
 
         char1 = None
         while not char1:
             print("Choose Character 1:")
-            for i, name in enumerate(characters_names, 1):
+            for i, name in enumerate(character_names, 1):
                 print(f"{i}. {name}")
             char1_choice = input("Enter the number corresponding to Character 1:\n").strip()
             char1 = character_names[int(char1_choice) - 1] if char1_choice.isdigit() and 1 <= int(char1_choice) <= len(character_names) else None
@@ -165,12 +160,7 @@ def add_new_battle():
             print(f"1. {char1} wins")
             print(f"2. {char2} wins")
             outcome_choice = input("Enter the number corresponding to the winner:\n").strip()
-            if outcome_choice == "1":
-                outcome = f"{char1} wins"
-            elif outcome_choice == "2":
-                outcome = f"{char2} wins"
-            else:
-                print("Invlaid outcome choice. Please try again")
+            outcome = f"{char1} wins" if outcome_choice == "1" else f"{char2} wins" if outcome_choice == "2" else None
 
         while True:
             damage_dealt = input("Enter damage dealt (0-100):\n").strip()
@@ -194,16 +184,14 @@ def add_new_battle():
         location_choice = input(f"Enter the number corresponding to the location or choose {len(locations) + 1} to add a new one: \n").strip()
 
         if location_choice == str(len(locations) + 1):
-
             new_location = input("Enter the name of the new location:\n").strip()
-            if new_location:
-                location = new_location
-                locations.append(new_location)
+            location = new_location if new_location else None
+            if location:
+                locations.append(location)
                 print(f"New location '{new_location}' added successfully.")
             else:
                 print("Invalid location name. Location not added.")
                 return
-
         else:
             location = locations[int(location_choice) - 1] if location_choice.isdigit() and 1 <= int(location_choice) <= len(locations) else None
 
@@ -214,12 +202,11 @@ def add_new_battle():
         battles_sheet.append_row([char1, char2, outcome, damage_dealt, duration, location])
         print("New battle added successfully!")
     except Exception as e:
-        print(f"error adding new battle: {e}")
+        print(f"Error adding new battle: {e}")
 
 
 # Function to add new skills to the 'Skills' worksheet.
-def add_new_skills():
-
+def add_new_skill():
     try:
         skill_name = input("Enter skill name:\n").strip()
 
@@ -243,55 +230,38 @@ def add_new_skills():
         print(f"Error adding new skill: {e}")
 
 
-#Function to call the character retrieval function and list all characters 
-def list_characters():
-    get_all_characters()
-
-
-#Function to call the battle retrieval function and list all battles
-def list_battles():
-    get_all_battles()
-
-
-#Function to call the skills retrieval function and list all skills
-def list_skills():
-    get_all_skills()
-
-
-#Main menu function to list all options and interact with database 
-def menu():
-
+# Main menu for the app
+def main_menu():
     while True:
-        print("\n--- Z Tournament Database ---")
+        print("\n--- Z Tournament Battle Tracker ---")
         print("1. List all characters")
         print("2. List all battles")
         print("3. List all skills")
-        print("4. Add new character")
-        print("5. Add new battle")
-        print("6. Add new skill")
+        print("4. Add a new character")
+        print("5. Add a new battle")
+        print("6. Add a new skill")
         print("7. Exit")
 
-        choice = input("Enter your choice (1-7):\n").strip()
+        choice = input("Enter the number of your choice:\n").strip()
 
         if choice == "1":
-            list_characters()
+            get_all_characters()
         elif choice == "2":
-            list_battles()
+            get_all_battles()
         elif choice == "3":
-            list_skills()
+            get_all_skills()
         elif choice == "4":
             add_new_character()
         elif choice == "5":
             add_new_battle()
         elif choice == "6":
-            add_new_skills()
+            add_new_skill()
         elif choice == "7":
             print("Exiting the application.")
             break
         else:
-            print("Invalid choice, please select a valid option.")
+            print("Invalid choice. Please enter a number from 1 to 7.")
 
 
 if __name__ == "__main__":
-    menu()
-
+    main_menu()
