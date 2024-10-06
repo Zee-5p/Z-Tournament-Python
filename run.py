@@ -30,7 +30,10 @@ def get_headers_and_data(sheet):
 # Function to display data as a table using tabulate 
 def display_table(headers, data):
 
-    print(tabulate(data, headers, tablefmt="simple"))
+    max_widths = [max(len(header), max(len(row[i]) for row in data)) for i, header in enumerate(headers)]
+    maxcolwidth = max(max_widths) + 2 
+
+    print(tabulate(data, headers, tablefmt="simple", maxcolwidth= maxcolwidth))
 
 
 # Function to list all characters from the 'Characters' worksheet.
