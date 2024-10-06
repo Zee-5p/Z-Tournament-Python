@@ -26,16 +26,19 @@ def get_headers_and_data(sheet):
     data = all_data[1:]
     return headers, data
 
-
 def display_table_dynamic_width(headers, data):
-    total_header_length = sum(len(header) for header in headers)
-    num_columns = len(headers)
+
     max_width = 80
+    num_columns = len(headers)
+    total_header_length = sum(len(header) for header in headers)
 
     if total_header_length >= max_width:
         column_widths = [max(1, max_width // num_columns)] * num_columns
     else:
-        column_widths = [(max_width - total_header_length) // num_columns + 1 for _ in range(num_columns)]
+        remaining_space = max_width - total_header_length
+        column_widths = [(len(header) + remaining_space // num_columns) for header in headers]
+
+    column_widths = [max(1, width) for width in column_widths]
 
     truncated_headers = [header[:width] + '...' if len(header) > width else header for header, width in zip(headers, column_widths)]
 
@@ -44,7 +47,7 @@ def display_table_dynamic_width(headers, data):
         truncated_row = [cell[:width] + '...' if len(cell) > width else cell for cell, width in zip(row, column_widths)]
         truncated_data.append(truncated_row)
 
-    print(tabulate(truncated_data, truncated_headers, tablefmt="simple"))
+    print(tabulate(truncated_data, headers=truncated_headers, tablefmt="simple"))
 
 
 # Function to list all characters from the 'Characters' worksheet.
