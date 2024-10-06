@@ -57,7 +57,7 @@ def get_all_characters():
         if not data:
             print("No characters found.")
         else:
-            display_table(headers, data)
+            display_table_dynamic_width(headers, data)
     except Exception as e:
         print(f"Error retrieving characters: {e}")
 
@@ -69,7 +69,7 @@ def get_all_battles():
         if not data:
             print("No battles found.")
         else:
-            display_table(headers, data)
+            display_table_dynamic_width(headers, data)
     except Exception as e:
         print(f"Error retrieving battles: {e}")
 
@@ -81,7 +81,7 @@ def get_all_skills():
         if not data:
             print("No skills found.")
         else:
-            display_table(headers, data)
+            display_table_dynamic_width(headers, data)
     except Exception as e:
         print(f"Error retrieving skills: {e}")
 
