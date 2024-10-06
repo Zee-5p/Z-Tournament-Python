@@ -19,16 +19,17 @@ This project is designed to enhance the viewing experience of this great show, g
    - List all characters that are stored in the tracker with attributes such as power level, race, health, energy, and affiliation.
 
    - Add new characters as they are introduced in the series, with real-time updates to a Google Sheets database.
-
+    ![image of character list](images/list%20characters.png)
 2. **Battle Tracking**:
    - List previously logged battles with information like the winner, damage dealt, battle duration, and location.
 
    - Add new battles, logging details of the fighters involved and the outcome.
-
+    ![image of battle log](images/list%20battles.png)
 3. **Skill Management**:
    - View skills logged in the tracker, including details such as power rating and energy cost.
 
    - Add new skills as characters develop new abilities in the series and new characters skills are revealed.
+    ![image of adding new skill](images/add%20new%20skill.png)
 
 4. **Main menu**:
    - shows all the options of the user to choose from. 

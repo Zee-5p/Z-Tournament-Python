@@ -26,6 +26,8 @@ def get_headers_and_data(sheet):
     data = all_data[1:]
     return headers, data
 
+
+# Function to display table with dynamic width
 def display_table_dynamic_width(headers, data):
 
     max_width = 80
